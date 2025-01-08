@@ -22,7 +22,7 @@ const BlogContent: React.FC<Props> = () => {
             }}
             key={post._id}
           >
-            <div className="relative flex flex-col  bg-gray-800 shadow-md py-10 md:py-0 md:h-[600px] lg:h-[620px] rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
+            <div className="relative flex flex-col  bg-gray-800 shadow-md pb-8 md:py-0 md:h-[600px] lg:h-[620px] rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
               {/* Image Section */}
               <div className="group relative overflow-hidden h-52">
                 {post.image && (
