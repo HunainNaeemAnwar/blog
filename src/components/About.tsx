@@ -12,7 +12,7 @@ interface AboutProps {
 
 const About = ({ data }: AboutProps) => {
   return (
-    <div className="relative h-[900px] mt-[109px] lg:mt-[118px]">
+    <div className="relative h-[900px] mt-[102px] lg:mt-[118px]">
       {/* Hero Image */}
       <div className="absolute block w-full h-full vignette bg-black/30 z-40">
         <Image
@@ -27,7 +27,7 @@ const About = ({ data }: AboutProps) => {
         <h2 className="font-oswald font-bold text-shadow-md lg:text-shadow-lg lg:text-[64px] text-[50px] uppercase tracking-tight">
           {data.heading}
         </h2>
-        <p className="text-[16px]  lg:text-[18px] font-poppins font-normal text-shadow-md">
+        <p className="text-[16px]  lg:text-[18px] font-poppins font-medium text-shadow-md">
           {data.aboutme}
         </p>
       </div>
