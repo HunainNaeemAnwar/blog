@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Post } from "@/sanity/types";
 import { urlFor } from "@/sanity/lib/image";
+export const revalidate = 30;
 
 interface Props {
   posts: Post[];

@@ -2,6 +2,8 @@ import NavHero from "@/components/NavHero";
 import BlogContent from "@/components/BlogContent";
 import { client } from "@/sanity/lib/client";
 
+export const revalidate = 30; 
+
 async function getData() {
   const data = await client.fetch(`*[_type == "blog"] {
     _id,
