@@ -1,12 +1,11 @@
 import React from "react";
 import { client } from "@/sanity/lib/client";
-import { groq } from "next-sanity";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import { Post } from "@/sanity/types";
 
 export const generateStaticParams = async () => {
-  const query = groq`*[_type == 'blog']{
+  const query = `*[_type == 'blog']{
         slug
     }`;
   const slugs: Post[] = await client.fetch(query);
@@ -22,7 +21,7 @@ const SlugPage = async ({ params }: any) => {
     const { slug } = await params;
 
     // Sanity query
-    const query = groq`*[_type == 'blog' && slug.current == $slug][0]{
+    const query = `*[_type == 'blog' && slug.current == $slug][0]{
       title,
       image,
       summary,
