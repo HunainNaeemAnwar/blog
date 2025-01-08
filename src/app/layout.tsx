@@ -1,6 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { SearchProvider } from '../context/SearchContext'
+import {
+  Geist,
+  Geist_Mono,
+  Poppins,
+  Oswald,
+  Inter,
+  Roboto,
+  
+} from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/NavBar";
+import Footer from "@/components/Footer"
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -10,6 +22,26 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+const poppins = Poppins({
+  variable: "--font-poppins",
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
+const oswald = Oswald({
+  variable: "--font-owsald",
+  subsets: ["latin"],
+  weight: ["300", "700"],
+});
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  weight: ["300", "700"],
+});
+const roboto = Roboto({
+  variable: "--font-roboto",
+  subsets: ["latin"],
+  weight: ["300", "700"],
 });
 
 export const metadata: Metadata = {
@@ -23,12 +55,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+    <SearchProvider>
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${oswald.variable} ${inter.variable} ${roboto.variable} antialiased`}
+        >
+          <Navbar />
+          {children}
+          <Footer/>
+        </body>
+      </html>
+    </SearchProvider>
   );
 }
