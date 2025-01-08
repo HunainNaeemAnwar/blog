@@ -12,7 +12,7 @@ interface AboutProps {
 
 const About = ({ data }: AboutProps) => {
   return (
-    <div className="relative h-[900px] mt-[116px] lg:mt-[118px]">
+    <div className="relative h-[900px] mt-[108px] lg:mt-[118px]">
       {/* Hero Image */}
       <div className="absolute block w-full h-full vignette bg-black/30 z-40">
         <Image

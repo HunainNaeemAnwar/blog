@@ -89,7 +89,7 @@ const Navbar = async ({ featuredPost }: props) => {
       </nav>
 
       {/* Hero Text */}
-      <div className="absolute left-10 top-[350px]  flex flex-col gap-4 w-[280px] md:w-[500px] lg:w-[600px] text-shadow-sm">
+      <div className="absolute left-10 top-[280px] md:top-[350px]  flex flex-col gap-4 w-[280px] md:w-[500px] lg:w-[600px] text-shadow-sm">
         <p className="font-poppins font-medium text-[22px] lg:text-[24px] text-shadow-md">
           Most Popular
         </p>
