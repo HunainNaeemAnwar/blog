@@ -18,7 +18,7 @@ const SearchBar: React.FC = () => {
   };
 
   return (
-    <div className="relative flex items-center justify-center">
+    <div className="relative flex items-center  justify-center">
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -33,7 +33,7 @@ const SearchBar: React.FC = () => {
           placeholder="Search blogs..."
           value={query}
           onChange={handleInputChange}
-          className="absolute top-16 right-[-15px] md:relative md:top-0 lg:text-[18px] text-[15px] md:py-1 bg-transparent focus:outline-none focus:border-b md:px-5 lg:px-10 transition-opacity duration-300 ease-in-out"
+          className="absolute top-16  md:relative md:top-0 lg:text-[18px] text-[15px] md:py-1 bg-transparent focus:outline-none focus:border-b md:px-5 lg:px-10 transition-opacity duration-300 ease-in-out w-[110px] md:w-min"
         />
         <div className="md:flex hidden">
           {" "}
