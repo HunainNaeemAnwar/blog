@@ -35,7 +35,7 @@ export default function Home() {
   if (loading) {
     return (
       <main className="container flex h-screen flex-col items-center justify-center">
-        <span className="loader"></span>
+        <span className="loader text-black dark:text-white "></span>
       </main>
     );
   }

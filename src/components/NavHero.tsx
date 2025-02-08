@@ -39,7 +39,7 @@ async function getData() {
 const Navbar = async ({ featuredPost }: props) => {
   const data = await getData();
   return (
-    <div className="relative h-[900px]">
+    <div className="relative h-[900px] text-white">
       {/* Hero Image */}
       <div className="absolute vignette block w-full h-full">
         <Image

@@ -38,7 +38,7 @@ const SlugPage = async ({ params }: any) => {
 
     return (
       <div className="post flex flex-col items-center justify-center gap-10 mt-48 pb-20 relative ">
-        <div className=" mb-20 border px-6 py-2 ">
+        <div className=" mb-20 border-2 border-black px-6 py-2 dark:border-2 dark:border-white ">
           <h1 className="tracking-tight font-sans font-semibold uppercase text-[35px] md:text-[64px]">
             {post.title}
           </h1>
@@ -50,7 +50,7 @@ const SlugPage = async ({ params }: any) => {
             alt={post.title}
             width={800}
             height={500}
-            className="border"
+            className="border-2 border-black dark:border dark:border-white"
           />
         ) : (
           <div className="w-full h-[500px] bg-gray-200 flex items-center justify-center">

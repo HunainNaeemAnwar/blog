@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SearchProvider } from '../context/SearchContext'
+import { SearchProvider } from "../context/SearchContext";
 import {
   Geist,
   Geist_Mono,
@@ -7,12 +7,10 @@ import {
   Oswald,
   Inter,
   Roboto,
-  
 } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/NavBar";
-import Footer from "@/components/Footer"
-
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -62,7 +60,7 @@ export default function RootLayout({
         >
           <Navbar />
           {children}
-          <Footer/>
+          <Footer />
         </body>
       </html>
     </SearchProvider>
