@@ -1,37 +1,28 @@
 import NavHero from "@/components/NavHero";
 import BlogContent from "@/components/BlogContent";
 import { client } from "@/sanity/lib/client";
+import { groq } from "next-sanity";
 
-export const revalidate = 30; 
+export const revalidate = 30;
 
 async function getData() {
-  const data = await client.fetch(`*[_type == "blog"] {
-    _id,
-    title,
-    description,
-    slug,
-    image,
-    isFeatured
-  }`);
+  const data = await client.fetch(groq`
+    {
+      "featured": *[_type == "blog" && isFeatured == true] | order(_createdAt desc) [0], 
+      "morePosts": *[_type == "blog" && isFeatured != true] | order(_createdAt desc) [0..3]
+    }
+  `);
   return data;
 }
-type Post = {
-  _id: string;
-  title: string;
-  description: string;
-  slug: string;
-  image: string;
-  isFeatured: boolean;
-};
 export default async function Home() {
-  const data = await getData();
-
+  const { featured, morePosts } = await getData();
+  console.log(morePosts);
   // Determine the featured post
-  const featuredPost = data.find((post: Post) => post.isFeatured) || data[0];
+
   return (
     <main className="items-center justify-center flex min-h-screen flex-col mx-auto">
-      <NavHero featuredPost={featuredPost} />
-      <BlogContent posts={data} />
+      <NavHero featuredPost={featured} />
+      <BlogContent posts={morePosts} />
     </main>
   );
 }
