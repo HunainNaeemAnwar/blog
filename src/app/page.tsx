@@ -3,26 +3,21 @@ import BlogContent from "@/components/BlogContent";
 import { client } from "@/sanity/lib/client";
 import { groq } from "next-sanity";
 
-export const revalidate = 30;
+const featured = groq`*[_type == "blog" && isFeatured == true] {...,} | order(_createdAt asc) [0]`;
 
-async function getData() {
-  const data = await client.fetch(groq`
-    {
-      "featured": *[_type == "blog" && isFeatured == true] | order(_createdAt desc) [0], 
-      "morePosts": *[_type == "blog" && isFeatured != true] | order(_createdAt desc) [0..3]
-    }
-  `);
-  return data;
-}
+const post = groq`*[_type == 'blog']{
+    ...,
+    }[0..3]`;
+
 export default async function Home() {
-  const { featured, morePosts } = await getData();
-  console.log(morePosts);
+  const isFeatured = await client.fetch(featured);
+  const morePost = await client.fetch(post);
   // Determine the featured post
-
   return (
     <main className="items-center justify-center flex min-h-screen flex-col mx-auto">
-      <NavHero featuredPost={featured} />
-      <BlogContent posts={morePosts} />
+      <NavHero featuredPost={isFeatured} />
+
+      <BlogContent posts={morePost} />
     </main>
   );
 }

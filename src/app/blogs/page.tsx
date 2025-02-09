@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { client } from "@/sanity/lib/client";
 import BlogContent from "@/components/BlogContent";
 import "@/css/loader.css";
+import { motion } from "framer-motion";
 
 async function getData() {
   const data = await client.fetch(`*[_type == "blog"] {
@@ -10,7 +11,7 @@ async function getData() {
     longDescription,
     description,
     image,
-  }`);
+  } | order(_createdAt asc)`);
   return data;
 }
 
@@ -42,9 +43,19 @@ export default function Home() {
 
   return (
     <main className=" flex justify-center items-center min-h-screen flex-col mx-auto">
+      {" "}
       <div className="mt-20">
+        {" "}
         {data && data.length > 0 ? (
-          <BlogContent posts={data} />
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="w-full max-w-full "
+          >
+            {" "}
+            <BlogContent posts={data} />{" "}
+          </motion.div>
         ) : (
           <p className="font-poppins tracking-wide text-[18px]">
             No blog posts found.
